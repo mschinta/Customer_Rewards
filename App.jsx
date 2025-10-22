@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {usersMockdata} from './mockData'
+import {usersMockdata} from './mockData';
 
 function App() {
  const [customerRewards,setCustomerRewards] = useState({});
@@ -83,3 +83,4 @@ function App() {
 }
 
 export default App;
+

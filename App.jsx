@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {usersMockdata} from './mockData';
+import { calculateRewardPoints } from './rewardUtils';
 
 function App() {
  const [customerRewards,setCustomerRewards] = useState({});
@@ -12,7 +13,6 @@ function App() {
   "Nov", "Dec"
 ];
 
- 
  useEffect(() => {
      fetchUserRecords();
   },[]);
@@ -35,8 +35,7 @@ function App() {
       months.add(purchaseDate);
     });
     setCustomerRewards(customerRewards);
-    setMonths([...months].sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b)))
- 
+    setMonths([...months].sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b)));
     }
     catch(error) {
       setError("Problem in fetching data");
@@ -45,18 +44,7 @@ function App() {
       setLoading(false);
     }
   }
-
-  
-  const calculateRewardPoints = (amount) => {
-    let rewardPoints = 0;
-    if (amount > 100) {
-      rewardPoints = (amount - 100) * 2 + 50;
-    } else if (amount > 50 ) {
-      rewardPoints = amount - 50;
-    } 
-    return Math.floor(rewardPoints);
-  };
-  
+ 
   if(loading) return <p>Loading Rewards data ... </p>
   if(error) return <p>{error} </p>
 
@@ -77,8 +65,7 @@ function App() {
           {months.map((month) => (<td key={month}>{monthsData[month] ||0}</td>))}
           <td>{monthsData.total}</td>
         </tr>
-        ))}
-        
+        ))} 
       </tbody>
     </table>
     </>
@@ -86,5 +73,6 @@ function App() {
 }
 
 export default App;
+
 
 

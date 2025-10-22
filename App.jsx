@@ -57,10 +57,12 @@ function App() {
     return Math.floor(rewardPoints);
   };
   
-  if(loading) return <p>Data fetching... </p>
+  if(loading) return <p>Loading Rewards data ... </p>
   if(error) return <p>{error} </p>
 
   return (
+   <>
+    <h1>Customer Reward Points</h1>
     <table>
       <thead>
         <tr>
@@ -79,8 +81,10 @@ function App() {
         
       </tbody>
     </table>
+    </>
   );
 }
 
 export default App;
+
 
